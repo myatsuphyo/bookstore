@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'ResourcesController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('books', 'BookController');

@@ -1,4 +1,4 @@
-@include('books.templates.partials.header')
+@include('templates.partials.header')
 
 <!-- container -->
 <div class="container">
@@ -11,4 +11,4 @@
     </div>
 </div><!-- container -->
 
-@include('books.templates.partials.footer')
+@include('templates.partials.footer')
