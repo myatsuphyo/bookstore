@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Book;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use function Psy\debug;
+
 
 class BookController extends Controller
 {
@@ -25,7 +28,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -36,7 +39,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        //dd($data);
+        Book::create($data);
+        
+        Session::flash('message', $data['name'].' added successfully  ');
+        return redirect('/books');
     }
 
     /**
@@ -58,7 +66,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::find($id);
+        return view('books.edit', ['book'=> $book]);
     }
 
     /**
@@ -70,7 +79,12 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id);
+        $data = $request->all();
+        $book->update($data);
+
+        Session::flash('message', $data['name'].' updated successfully  ');
+        return redirect('/books');
     }
 
     /**
@@ -79,8 +93,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        //
-    }
+        $book = Book::find($id);
+        $book->destroy($id);
+
+        Session::flash('message', $book['name'].' deleted successfully  ');
+        return redirect('/books');
+    }   
 }
