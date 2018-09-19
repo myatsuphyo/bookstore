@@ -7,6 +7,6 @@
 
     <link rel="stylesheet" href="{!! asset('assets/css/bootstrap.min.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/css/styles.css') !!}">
-    <title>PHP CRUD</title>
+    <title>Information of a book store</title>
 </head>
 <body>

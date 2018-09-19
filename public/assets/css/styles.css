@@ -1,6 +1,11 @@
 table {
+    counter-reset: tableCount;  
     background-color: #ffffff;
-    box-shadow: 0 0 10px #cccccc;
+    box-shadow: 0 0 10px #cccccc;   
+}
+.counterCell:before {              
+    content: counter(tableCount); 
+    counter-increment: tableCount; 
 }
 
 #dataForm {
